@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*[data-hint] {
+  position: relative;
+}
+
+*[data-hint]:hover:after {
+  visibility: visible;
+  transform: translate(-50%, -100%);
+}
+
+*[data-hint]:after {
+  visibility: hidden;
+  position: absolute;
+  transition: transform .2s ease;
+  top: -3px;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, 0%);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6); /* Задний фон с прозрачностью 50% */
+  content: attr(data-hint);
+  display: flex;
+  padding: 5px; /* Увеличение отступов для более широкой подсказки */
+  border-radius: 3px;
+  font-size: 0.9em;
+  line-height: 1.2em; /* Увеличение высоты строки для более широкой подсказки */
+  width: 300px; /* Установка фиксированной ширины подсказки */
+  text-align: center; /* Выравнивание текста по центру */
+}
+
+*[data-hint]:hover {
+  cursor: pointer;
+}
