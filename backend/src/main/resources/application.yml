@@ -1,0 +1,19 @@
+security.jwt.token.secret-key: my-secret-key
+
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/cleaning_db
+    username: postgres
+    password: 1234
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  sql:
+    init:
+      mode: always
+      platform: postgres
