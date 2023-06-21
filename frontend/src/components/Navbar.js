@@ -47,6 +47,7 @@ export function onRegister(event, surname, firstname, patronymic, email, passwor
 
 
 export const Navbar = ({ isAuthenticated, handleLogout }) => {
+  console.log("navbar " + isAuthenticated);
   return (
     <>
       <nav className="bg-white border-gray-200">

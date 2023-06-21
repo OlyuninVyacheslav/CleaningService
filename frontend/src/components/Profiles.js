@@ -41,7 +41,7 @@ function Profiles() {
 
   return (
     <div className="max-w-screen-xl mx-auto p-4 text-gray-800">
-      <h1 className="text-2xl font-bold mb-4">Мои профили</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">Мои профили</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {profiles.map(profile => (
           <div key={profile.id} className="border border-blue-500 rounded-lg p-4 shadow-xl">

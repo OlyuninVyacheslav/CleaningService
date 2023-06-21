@@ -39,13 +39,13 @@
 
     render() {
       return (
-        <div className="flex justify-center">
-          <div className="w-1/4">
+        <div className="flex justify-center mt-12">
+          <div className="w-1/4 border-x-4 border-blue-500">
             <div className="flex justify-center mb-3">
               <button
                 className={classNames(
                   'py-2 px-12 rounded-tl-lg rounded-bl-lg focus:outline-none',
-                  this.state.active === 'login' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                  this.state.active === 'login' ? 'bg-blue-600 hover:bg-blue-800 text-white font-semibold' : 'bg-blue-200 hover:bg-blue-400 font-semibold'
                 )}
                 id="tab-login"
                 onClick={() => this.setState({ active: 'login' })}
@@ -55,7 +55,7 @@
               <button
                 className={classNames(
                   'py-2 px-5 rounded-tr-lg rounded-br-lg focus:outline-none',
-                  this.state.active === 'register' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+                  this.state.active === 'register' ? 'bg-blue-600 hover:bg-blue-800 text-white font-semibold' : 'bg-blue-200 hover:bg-blue-400 font-semibold'
                 )}
                 id="tab-register"
                 onClick={() => this.setState({ active: 'register' })}
@@ -78,7 +78,7 @@
                       type="email"
                       id="email"
                       name="email"
-                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                      className="w-full border border-blue-500 focus:outline-blue-600 rounded px-4 py-1"
                       onChange={this.onChangeHandler}
                     />
                     <label className="block text-sm text-gray-700" htmlFor="email">
@@ -91,7 +91,7 @@
                       type="password"
                       id="password"
                       name="password"
-                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                      className="w-full border border-blue-500 focus:outline-blue-600 rounded px-4 py-1"
                       onChange={this.onChangeHandler}
                     />
                     <label className="block text-sm text-gray-700" htmlFor="password">
@@ -101,7 +101,7 @@
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-500 text-white py-2 px-4 rounded-md focus:outline-none"
+                    className="w-full bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none"
                   >
                     Войти
                   </button>
@@ -121,7 +121,7 @@
                       type="text"
                       id="surname"
                       name="surname"
-                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                      className="w-full border border-blue-500 focus:outline-blue-600 rounded px-4 py-1"
                       onChange={this.onChangeHandler}
                     />
                     <label className="block text-sm text-gray-700" htmlFor="surname">
@@ -134,7 +134,7 @@
                       type="text"
                       id="firstname"
                       name="firstname"
-                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                      className="w-full border border-blue-500 focus:outline-blue-600 rounded px-4 py-1"
                       onChange={this.onChangeHandler}
                     />
                     <label className="block text-sm text-gray-700" htmlFor="firstname">
@@ -147,7 +147,7 @@
                       type="text"
                       id="patronymic"
                       name="patronymic"
-                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                      className="w-full border border-blue-500 focus:outline-blue-600 rounded px-4 py-1"
                       onChange={this.onChangeHandler}
                     />
                     <label className="block text-sm text-gray-700" htmlFor="patronymic">
@@ -160,7 +160,7 @@
                       type="email"
                       id="register-email"
                       name="email"
-                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                      className="w-full border border-blue-500 focus:outline-blue-600 rounded px-4 py-1"
                       onChange={this.onChangeHandler}
                     />
                     <label className="block text-sm text-gray-700" htmlFor="register-email">
@@ -173,7 +173,7 @@
                       type="password"
                       id="register-password"
                       name="password"
-                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                      className="w-full border border-blue-500 focus:outline-blue-600 rounded px-4 py-1"
                       onChange={this.onChangeHandler}
                     />
                     <label className="block text-sm text-gray-700" htmlFor="register-password">
@@ -183,7 +183,7 @@
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-500 text-white py-2 px-4 rounded-md focus:outline-none"
+                    className="w-full bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none"
                   >
                     Создать аккаунт
                   </button>

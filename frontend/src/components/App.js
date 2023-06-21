@@ -8,9 +8,11 @@ import Services from './Services';
 import Account from './Account';
 import NewProfile from './NewProfile'
 import { ToastContainer } from 'react-toastify';
+import { getAuthToken } from '../axios_helper'
 
 function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("auth_token") !== null);
+    const [isAuthenticated, setIsAuthenticated] = useState(getAuthToken() !== null && getAuthToken() !== "null");
+    console.log("appjs " + isAuthenticated);
 
     const handleLogin = (e, email, password) => {
         onLogin(e, email, password);
@@ -28,7 +30,7 @@ function App() {
                 <Navbar isAuthenticated={isAuthenticated} handleLogout={() => setIsAuthenticated(false)} />
                 <Routes>
                     <Route
-                        path="/login"
+                        path="/login/*"
                         element={isAuthenticated ? (
                             <Routes>
                                 <Route path="/" element={<Navigate to="/" replace />} />

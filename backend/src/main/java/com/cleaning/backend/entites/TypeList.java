@@ -21,6 +21,14 @@ public class TypeList {
     @JsonIgnore
     private List<App> apps;
 
+    public List<App> getApps() {
+        return apps;
+    }
+
+    public void setApps(List<App> apps) {
+        this.apps = apps;
+    }
+
     public Long getId() {
         return id;
     }

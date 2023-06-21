@@ -5,6 +5,16 @@ public class AppRequest {
     private Long type_id;
     private Long basis_id;
 
+    private Long status_id;
+
+    public Long getStatus_id() {
+        return status_id;
+    }
+
+    public void setStatus_id(Long status_id) {
+        this.status_id = status_id;
+    }
+
     public App getApp() {
         return app;
     }

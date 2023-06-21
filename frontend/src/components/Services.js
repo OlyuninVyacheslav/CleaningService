@@ -21,43 +21,61 @@ function Services() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Получение данных из состояния компонента
     const profileId = document.querySelector('select[name="profile"]').value;
-    const profile = profiles.find(profile => profile.id === parseInt(profileId));
+    const profile = profiles.find((profile) => profile.id === parseInt(profileId));
   
     const type = selectedType.id;
     const square = area;
-    
+  
     const basis = selectedBasis.id;
   
-    const dateOfComp = cleaningDate.format('YYYY-MM-DD HH:mm');
-    
+    const dateOfComp = cleaningDate.toISOString();
+  
     const notes = comment;
   
-    // Формирование объекта заявки
     const requestPayload = {
       app: {
-          address: profile.address,
-          telephone: profile.telephone,
-          surname: profile.surname,
-          firstname: profile.firstname,
-          patronymic: profile.patronymic,
-          square: square,
-          dateOfComp: dateOfComp,
-          notes: notes
+        address: profile.address,
+        telephone: profile.telephone,
+        surname: profile.surname,
+        firstname: profile.firstname,
+        patronymic: profile.patronymic,
+        square: square,
+        dateOfCompletion: dateOfComp,
+        notes: notes,
       },
       type_id: type,
-      basis_id: basis
-  };
+      basis_id: basis,
+      status_id: 1,
+    };
   
-    // Отправка заявки на сервер
     request('post', '/apps', requestPayload)
-      .then(response => {
-        // Заявка успешно добавлена, выполните необходимые действия (например, отобразите сообщение об успехе)
+      .then((response) => {
+        const createdAppId = response.data.id;
+        console.log(createdAppId);
+        const appContentRequests = services.map((service) => {
+          if (service.count > 0) {
+            const appContentPayload = {
+              appContent: {
+                count: service.count || 0,
+              },
+              service_id: service.id,
+              app_id: createdAppId
+            };
+            return request('post', '/appcontent', appContentPayload);
+          }
+        });
+  
+        Promise.all(appContentRequests)
+          .then((appContentResponses) => {
+            console.log('AppContent created successfully:', appContentResponses);
+          })
+          .catch((error) => {
+            console.error('Error creating AppContent:', error);
+          });
       })
-      .catch(error => {
-        // Произошла ошибка при добавлении заявки, обработайте ее соответствующим образом (например, отобразите сообщение об ошибке)
-        console.error(error);
+      .catch((error) => {
+        console.error('Error creating App:', error);
         console.log(profile.address);
         console.log(type);
         console.log(square);
@@ -66,6 +84,7 @@ function Services() {
         console.log(notes);
       });
   };
+  
   
 
   useEffect(() => {
@@ -83,7 +102,7 @@ function Services() {
       })
       .catch(error => console.error(error));
 
-    setArea(30); // Установка значения площади по умолчанию равным 30
+    setArea(30);
 
     request('get', '/services')
       .then(response => {

@@ -28,7 +28,7 @@ public class App {
     private String patronymic;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", nullable = true)
     @JsonIgnore
     private Client client;
 
@@ -39,19 +39,23 @@ public class App {
     private Timestamp dateOfCompletion;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_id", nullable = false, columnDefinition = "INT DEFAULT 1")
+    @JoinColumn(name = "status_id", nullable = true, columnDefinition = "INT DEFAULT 1")
+    @JsonIgnore
     private StatusListApp status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "basis_id")
+    @JoinColumn(name = "basis_id", nullable = true)
+    @JsonIgnore
     private BasisList basis;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "brigade_id")
+    @JoinColumn(name = "brigade_id", nullable = true)
+    @JsonIgnore
     private Brigade brigade;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_id")
+    @JoinColumn(name = "type_id", nullable = true)
+    @JsonIgnore
     private TypeList type;
 
     @Column
