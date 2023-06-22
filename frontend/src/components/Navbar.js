@@ -1,9 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { request, setAuthHeader } from '../axios_helper';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function logout() {
   setAuthHeader(null);
+  window.location.reload();
+  window.location.assign('/')
 };
 
 export function onLogin(e, email, password) {
@@ -17,9 +23,14 @@ export function onLogin(e, email, password) {
     }).then(
       (response) => {
         setAuthHeader(response.data.token);
+        window.location.reload();
       }).catch(
         (error) => {
           setAuthHeader(null);
+          toast.error('Неверный логин или пароль!', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 3000,
+          });
         }
       );
 };
@@ -38,6 +49,7 @@ export function onRegister(event, surname, firstname, patronymic, email, passwor
     }).then(
       (response) => {
         setAuthHeader(response.data.token);
+        window.location.reload();
       }).catch(
         (error) => {
           setAuthHeader(null);

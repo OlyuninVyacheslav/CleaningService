@@ -12,5 +12,7 @@ public interface AppService {
     App updateApp(App app);
     void deleteApp(Long id);
     List<App> getAppsByClientId(Long clientId);
+
+    int getAmount(Long id);
 }
 

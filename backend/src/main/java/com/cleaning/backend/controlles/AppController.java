@@ -8,6 +8,7 @@ import com.cleaning.backend.repositories.ClientRepository;
 import com.cleaning.backend.repositories.StatusListAppRepository;
 import com.cleaning.backend.repositories.TypeListRepository;
 import com.cleaning.backend.services.AppService;
+import com.cleaning.backend.services.impl.AppServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,6 +58,7 @@ public class AppController {
                 appinfo.setSurname(app.getSurname());
                 appinfo.setFirstname(app.getFirstname());
                 appinfo.setPatronymic(app.getPatronymic());
+                appinfo.setPrice(appService.getAmount(app.getId()));
                 Long status_id = app.getStatus().getId();
                 appinfo.setStatus(statusListAppRepository.findById(status_id).get().getStatus());
                 Long type_id = app.getType().getId();

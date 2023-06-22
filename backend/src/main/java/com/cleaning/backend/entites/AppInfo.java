@@ -15,6 +15,7 @@ public class AppInfo {
     private String patronymic;
     private String status;
     private String type;
+    private int price;
 
     public Long getId() {
         return id;
@@ -86,6 +87,14 @@ public class AppInfo {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     // Добавьте конструктор, геттеры и сеттеры

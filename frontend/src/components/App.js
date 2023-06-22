@@ -7,6 +7,7 @@ import Contacts from './Contacts';
 import Services from './Services';
 import Account from './Account';
 import NewProfile from './NewProfile'
+import Footer from './Footer';
 import { ToastContainer } from 'react-toastify';
 import { getAuthToken } from '../axios_helper'
 
@@ -16,17 +17,16 @@ function App() {
 
     const handleLogin = (e, email, password) => {
         onLogin(e, email, password);
-        setIsAuthenticated(true);
-    };
+      };
 
     const handleRegister = (event, surname, firstname, patronymic, email, password) => {
         onRegister(event, surname, firstname, patronymic, email, password);
-        setIsAuthenticated(true);
     };
 
     return (
         <>
             <BrowserRouter>
+            <div className="min-h-screen">
                 <Navbar isAuthenticated={isAuthenticated} handleLogout={() => setIsAuthenticated(false)} />
                 <Routes>
                     <Route
@@ -41,10 +41,12 @@ function App() {
                     />
                     <Route path="/" element={<Mainpage />} />
                     <Route path="/contacts" element={<Contacts />} />
-                    <Route path="/services" element={<Services />} />
+                    <Route path="/services" element={<Services isAuthenticated = {isAuthenticated} />} />
                     <Route path="/account" element={<Account />} />
                     <Route path="/newprofile" element={<NewProfile />} />
                 </Routes>
+                </div>
+                <Footer/>
             </BrowserRouter>
             <ToastContainer />
         </>
